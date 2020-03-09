@@ -2,6 +2,7 @@ package delegate_pattern
 
 import delegate_pattern.PersonViewModule.providePersonViewDelegate
 import delegate_pattern.PersonViewModule.provideSender
+import kotlin_delegates.PersonViewDelegate
 
 fun main(args: Array<String>) {
     OmgFragment(
