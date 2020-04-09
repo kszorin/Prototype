@@ -36,8 +36,6 @@ interface PersonViewDelegate {
 
 }
 
-class PersonPresenterDelegate(private val view: PersonViewDelegate)
-
 class PersonFragmentDelegate : PersonViewDelegate {
 
     override fun printPerson(personName: String) {
@@ -51,8 +49,6 @@ interface SenderView {
 
 }
 
-class SenderPresenter(private val view: SenderView)
-
 class SenderFragment(private val delegate: PersonViewDelegate) : SenderView,
     PersonViewDelegate by delegate {
 
@@ -64,4 +60,26 @@ class SenderFragment(private val delegate: PersonViewDelegate) : SenderView,
         delegate.printPerson(NAME)
         println("I'm sender")
     }
+}
+
+interface PersonPresenterDelegate {
+
+	fun openFun()
+}
+
+class PersonPresenterDelegateImpl(private val view: PersonViewDelegate) : PersonPresenterDelegate {
+	override fun openFun() {
+		TODO("not implemented")
+	}
+
+	fun closeFun() = Unit
+}
+
+class SenderPresenter(private val delegate: PersonPresenterDelegate)
+	: PersonPresenterDelegate by delegate {
+
+	fun newOpenFun() {
+		delegate.openFun()
+		delegate.closeFun() // <- ошибка компилятора, unresolved reference
+	}
 }
