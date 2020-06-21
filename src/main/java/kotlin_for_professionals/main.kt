@@ -3,14 +3,23 @@ package kotlin_for_professionals
 fun main(args: Array<String>) {
     val name = "Madrigal"
 
-    val healthPoints = 89
+    val healthPoints = 100
     val blessed = true
 
     val immortal = false
 
     val auraVisible = blessed && healthPoints > 50 || immortal
-    val auraColor = if (auraVisible) "GREEN" else "NONE"
-    println("(Aura: $auraColor) (Blessed: ${if (blessed) "YES" else "NO"})")
+
+    val karma = (Math.pow(Math.random(), (110 - healthPoints) / 100.0) * 20).toInt()
+    var auraColor = when (karma) {
+        in 0..5 -> "red"
+        in 6..10 -> "orange"
+        in 11..15 -> "purple"
+        in 16..20 -> "green"
+        else -> "none"
+    }
+
+    auraColor = if (auraVisible) auraColor else "none"
 
     val healthStatus = when (healthPoints) {
         100 -> "is excelent condition!"
@@ -24,6 +33,8 @@ fun main(args: Array<String>) {
         else -> "is in awful condition!"
     }
 
-    println("$name $healthStatus")
+    val statusFormatString = "(HP: $healthPoints) (Aura: $auraColor) -> $name $healthStatus"
+
+    println(statusFormatString)
 
 }
