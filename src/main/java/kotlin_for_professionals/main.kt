@@ -3,25 +3,30 @@ package kotlin_for_professionals
 fun main(args: Array<String>) {
     val name = "Madrigal"
 
-    val healthPoints = 100
+    val healthPoints = 89
     val blessed = true
 
     val immortal = false
 
+    val auraColor = getAuraColor(blessed, healthPoints, immortal)
+    val healthStatus = getFormatHealthStatus(healthPoints, blessed)
+    printPlayerStatus(
+        auraColor = auraColor,
+        blessed = blessed,
+        name = name,
+        healthStatus = healthStatus
+    )
+    castFireball()
+}
+
+private fun getAuraColor(blessed: Boolean, healthPoints: Int, immortal: Boolean): String {
     val auraVisible = blessed && healthPoints > 50 || immortal
+    val auraColor = if (auraVisible) "GREEN" else "NONE"
+    return auraColor
+}
 
-    val karma = (Math.pow(Math.random(), (110 - healthPoints) / 100.0) * 20).toInt()
-    var auraColor = when (karma) {
-        in 0..5 -> "red"
-        in 6..10 -> "orange"
-        in 11..15 -> "purple"
-        in 16..20 -> "green"
-        else -> "none"
-    }
-
-    auraColor = if (auraVisible) auraColor else "none"
-
-    val healthStatus = when (healthPoints) {
+private fun getFormatHealthStatus(healthPoints: Int, blessed: Boolean): String =
+    when (healthPoints) {
         100 -> "is excelent condition!"
         in 90..99 -> "has a few scratches."
         in 75..89 -> if (blessed) {
@@ -33,8 +38,16 @@ fun main(args: Array<String>) {
         else -> "is in awful condition!"
     }
 
-    val statusFormatString = "(HP: $healthPoints) (Aura: $auraColor) -> $name $healthStatus"
+private fun printPlayerStatus(
+    auraColor: String,
+    blessed: Boolean,
+    name: String,
+    healthStatus: String
+) {
+    println("(Aura: $auraColor) (Blessed: ${if (blessed) "YES" else "NO"})")
+    println("$name $healthStatus")
+}
 
-    println(statusFormatString)
-
+private fun castFireball(numFirebals: Int = 2) {
+    println("A glass of Fireball springs into existence. (x$numFirebals)")
 }
