@@ -4,26 +4,25 @@ fun main(args: Array<String>) {
     val name = "Madrigal"
 
     val healthPoints = 89
+    val numFireballs = 500
     val blessed = true
 
     val immortal = false
 
     val auraColor = getAuraColor(blessed, healthPoints, immortal)
     val healthStatus = getFormatHealthStatus(healthPoints, blessed)
+    val druggingStatus = getDruggingStatus(castFireball(numFireballs))
     printPlayerStatus(
         auraColor = auraColor,
         blessed = blessed,
         name = name,
-        healthStatus = healthStatus
+        healthStatus = healthStatus,
+        druggingStatus = druggingStatus
     )
-    castFireball()
 }
 
-private fun getAuraColor(blessed: Boolean, healthPoints: Int, immortal: Boolean): String {
-    val auraVisible = blessed && healthPoints > 50 || immortal
-    val auraColor = if (auraVisible) "GREEN" else "NONE"
-    return auraColor
-}
+private fun getAuraColor(blessed: Boolean, healthPoints: Int, immortal: Boolean): String =
+    if (blessed && healthPoints > 50 || immortal) "GREEN" else "NONE"
 
 private fun getFormatHealthStatus(healthPoints: Int, blessed: Boolean): String =
     when (healthPoints) {
@@ -42,12 +41,28 @@ private fun printPlayerStatus(
     auraColor: String,
     blessed: Boolean,
     name: String,
-    healthStatus: String
+    healthStatus: String,
+    druggingStatus: String
 ) {
     println("(Aura: $auraColor) (Blessed: ${if (blessed) "YES" else "NO"})")
-    println("$name $healthStatus")
+    println("DruggingStatus $druggingStatus")
+    println("($name $healthStatus)")
 }
 
-private fun castFireball(numFirebals: Int = 2) {
-    println("A glass of Fireball springs into existence. (x$numFirebals)")
+private fun castFireball(numFireballs: Int = 2): Int {
+    println("A glass of Fireball springs into existence. (x$numFireballs)")
+    return when {
+        numFireballs < 1 -> 0
+        numFireballs in 1..50 -> numFireballs
+        else -> 50
+    }
+}
+
+private fun getDruggingStatus(druggingLevel: Int) = when (druggingLevel) {
+    0 -> "Sober"
+    in 1..10 -> "Tipsy"
+    in 11..20 -> "Sloshed"
+    in 21..30 -> "Soused"
+    in 31..40 -> "Stewed"
+    else -> "t0aSt3d"
 }
