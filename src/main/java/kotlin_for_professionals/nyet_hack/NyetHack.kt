@@ -1,4 +1,4 @@
-package kotlin_for_professionals
+package kotlin_for_professionals.nyet_hack
 
 fun main(args: Array<String>) {
     val name = "Madrigal"
@@ -10,8 +10,11 @@ fun main(args: Array<String>) {
     val immortal = false
 
     val auraColor = getAuraColor(blessed, healthPoints, immortal)
-    val healthStatus = getFormatHealthStatus(healthPoints, blessed)
-    val druggingStatus = getDruggingStatus(castFireball(numFireballs))
+    val healthStatus =
+        getFormatHealthStatus(healthPoints, blessed)
+    val druggingStatus = getDruggingStatus(
+        castFireball(numFireballs)
+    )
     printPlayerStatus(
         auraColor = auraColor,
         blessed = blessed,
