@@ -1,9 +1,9 @@
-package kotlin_delegates
+package kotlinDelegates
 
 
-import delegate_pattern.PersonViewDelegate
-import kotlin_delegates.PersonModule.providePersonDelegateView
-import kotlin_delegates.PersonModule.provideSenderView
+import delegatePattern.PersonViewDelegate
+import kotlinDelegates.PersonModule.providePersonDelegateView
+import kotlinDelegates.PersonModule.provideSenderView
 
 fun main(args: Array<String>) {
     FormFragment(
