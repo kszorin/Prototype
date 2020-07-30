@@ -1,4 +1,4 @@
-package kotlin_for_professionals.nyet_hack
+package kotlinForProfessionals
 
 fun main(args: Array<String>) {
     val name = "Madrigal"

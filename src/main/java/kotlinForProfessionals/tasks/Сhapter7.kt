@@ -1,4 +1,4 @@
-package kotlin_for_professionals.tasks
+package kotlinForProfessionals.tasks
 
 fun main(args: Array<String>) {
     val output = toDragonSpeak("Can I help you?")

@@ -1,3 +1,5 @@
+package kotlinForProfessionals
+
 fun main(arks: Array<String>) {
     runSimulation()
 }

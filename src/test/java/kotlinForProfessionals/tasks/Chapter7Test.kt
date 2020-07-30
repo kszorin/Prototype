@@ -1,4 +1,4 @@
-package kotlin_for_professionals.tasks
+package kotlinForProfessionals.tasks
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
