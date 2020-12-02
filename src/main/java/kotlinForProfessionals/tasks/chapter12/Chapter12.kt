@@ -1,4 +1,4 @@
-package kotlinForProfessionals.tasks
+package kotlinForProfessionals.tasks.chapter12
 
 fun main() {
 

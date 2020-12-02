@@ -1,5 +1,6 @@
-package kotlinForProfessionals.tasks
+package kotlinForProfessionals.tasks.chapter10
 
+import kotlinForProfessionals.tasks.getMenuList
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

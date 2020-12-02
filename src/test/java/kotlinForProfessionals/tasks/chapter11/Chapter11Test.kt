@@ -1,5 +1,6 @@
-package kotlinForProfessionals.tasks
+package kotlinForProfessionals.tasks.chapter11
 
+import kotlinForProfessionals.tasks.removeBeggarUsers
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

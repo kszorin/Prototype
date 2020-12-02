@@ -1,5 +1,6 @@
-package kotlinForProfessionals.tasks
+package kotlinForProfessionals.tasks.chapter7
 
+import kotlinForProfessionals.tasks.toDragonSpeak
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
