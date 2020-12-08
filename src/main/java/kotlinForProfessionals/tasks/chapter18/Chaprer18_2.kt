@@ -3,6 +3,11 @@ package kotlinForProfessionals.tasks.chapter18
 fun main() {
 	println(frame("Welcome, comrade", 5, "*"))
 	println("Welcome, comrade".nameGreeting(5))
+
+	val changedString = "welcome, comrade".decimalRepeater {
+		capitalize()
+		plus("!")
+	}
 }
 
 fun frame(
@@ -27,3 +32,7 @@ fun String.nameGreeting(padding: Int): String {
 	return "$end\n$middle\n$end"
 }
 
+fun String.decimalRepeater(block: String.() -> Unit): String {
+	block()
+	return this
+}
