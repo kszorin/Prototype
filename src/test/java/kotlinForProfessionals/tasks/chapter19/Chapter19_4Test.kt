@@ -13,4 +13,12 @@ class Chapter19_4Test {
 
 		Assert.assertEquals(expected, actual)
 	}
+
+	@Test
+	fun `WHEN processList THEN get correct value`() {
+		val values = listOf(1, 18, 73, 3, 44, 6, 1, 33, 2, 22, 5, 7)
+		val actual = processList(values)
+
+		Assert.assertEquals(2339, actual)
+	}
 }
