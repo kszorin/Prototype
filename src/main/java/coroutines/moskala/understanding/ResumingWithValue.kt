@@ -5,12 +5,15 @@ import kotlin.coroutines.suspendCoroutine
 
 suspend fun main() {
     println("[${Thread.currentThread().name}] main() before")
-    val user: String = suspendCoroutine<String> { cont ->
-        requestUserApi { cont.resume(it) }
-    }
+    val user: String = requestUser()
     println("[${Thread.currentThread().name}] User = $user")
     println("[${Thread.currentThread().name}] main() after")
 }
+
+private suspend fun requestUser(): String =
+    suspendCoroutine { cont ->
+        requestUserApi { cont.resume(it) }
+    }
 
 private fun requestUserApi(block: (String) -> Unit) {
     println("[${Thread.currentThread().name}] requestUser() before")
